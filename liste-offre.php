@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gestion des offres d'emploi</title>
+  <link rel="stylesheet" href="dist/style.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap">
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+    }
+    .navbar-fixed {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 50;
+    }
+    .content {
+      margin-top: 100px; /* Adjust this value to match the height of the navbar */
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      height: calc(100vh - 100px); /* Adjust this value based on the navbar height */
+    }
+    .main-content-scrollable {
+      flex: 1;
+      height: 100%;
+      overflow-y: auto;
+      padding: 20px;
+      background-color: white;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    .main-content {
+      flex: 1;
+      padding: 20px;
+      background-color: white;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+  </style>
+</head>
+<body class="bg-gray-100">
+  <div class="navbar-fixed">
+    <?php include('navbar.html'); ?>
+  </div>
+
+  <div class="content mx-auto flex mt-24">
+    <div class="sidebar bg-gray-800 text-white p-6 rounded-lg mr-6 w-64">
+      <h3 class="text-lg font-semibold mb-4 text-black">Localisation</h3>
+      <input type="text" placeholder="Ville" class="w-full p-2 mb-4 rounded border border-gray-300 text-black placeholder-gray-500">
+      <input type="text" placeholder="Région" class="w-full p-2 mb-4 rounded border border-gray-300 text-black placeholder-gray-500">
+      <h3 class="text-lg font-semibold mb-4 text-black">Offre</h3>
+      <select class="w-full p-2 mb-4 rounded border border-gray-300 text-black">
+        <option>Type de contrat</option>
+      </select>
+      <select class="w-full p-2 mb-4 rounded border border-gray-300 text-black">
+        <option>Domaine</option>
+      </select>
+      <select class="w-full p-2 mb-4 rounded border border-gray-300 text-black">
+        <option>Trier par</option>
+      </select>
+    </div>
+
+    <div class="main-content-scrollable">
+      <?php
+        require('config.php');
+
+        // Récupérer les offres d'emploi depuis la base de données
+        $sql = "SELECT * FROM offre";
+        $result = $conn->query($sql);
+
+        // Afficher les offres d'emploi dans le tableau
+        if ($result->num_rows > 0) {
+          while($row = $result->fetch_assoc()) {
+            echo "<div class='offer-card border border-gray-200 rounded-lg p-4 mb-4'>";
+            echo "<h3 class='text-xl font-semibold mb-2'>" . $row["Titre"] . "</h3>";
+            echo "<p class='text-gray-600 mb-2'>" . $row["Entreprise"] . ", " . $row["ID_Ville"] . "</p>";
+            echo "<p class='text-gray-600 mb-4'>" . $row["Contrat"] . "</p>";
+            echo "<button class='bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600'>Voir l'offre</button>";
+            echo "</div>";
+          }
+        } else {
+          echo "<p>Aucune offre d'emploi trouvée.</p>";
+        }
+        $conn->close();
+      ?>
+    </div>
+
+    <div class="main-content ml-6">
+      <h2 class="text-2xl font-semibold mb-4">Titre de l'offre</h2>
+      <p class="text-gray-700 mb-4">Description de l'offre</p>
+      <p class="text-gray-700">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Vestibulum lorem sed risus ultricies tristique nulla aliquet. Proin sagittis nisl rhoncus mattis rhoncus. Integer malesuada nunc vel risus commodo viverra maecenas. Proin sagittis nisl rhoncus mattis rhoncus. Integer malesuada nunc vel risus commodo viverra maecenas. Proin sagittis nisl rhoncus mattis rhoncus.</p>
+    </div>
+  </div>
+
+  <?php include('footer.html'); ?>
+</body>
+</html>
