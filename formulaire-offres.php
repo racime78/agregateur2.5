@@ -11,6 +11,9 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
 </head>
 <body>
+<?php
+        echo file_get_contents("navbar.html");
+    ?>
 <div class="formbold-main-wrapper">
   <img src="images/logo3i.png" height="300px" width="300px">
 
@@ -87,6 +90,8 @@
   </div>
 </div>
 
+
+
 <script>
   $(document).ready(function() {
     $('#ville').select2({
@@ -98,7 +103,7 @@
         delay: 250,
         data: function(params) {
           return {
-            q: params.term // search term
+            q: params.term
           };
         },
         processResults: function(data) {
@@ -111,5 +116,6 @@
     });
   });
 </script>
+
 </body>
 </html>

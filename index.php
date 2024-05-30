@@ -20,19 +20,20 @@
         <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Postuler à des offres</button>
     </section>
 
-    <section class="bg-blue-500 height70 pt-8">
-        <div class="text-center  mb-8">
-            <h2 class="text-white  font-bold text-4xl pt-10 ">Inscrivez vous !</h2>
-            <p class="text-white mt-10 font-semibold">Pour une expérience de navigation personnalisé n'hésitez pas à vous inscrire sur notre plateforme !</p>
-            </div>
+    <section class="bg-blue-500 height45 pt-8">
+    <div class="text-center mb-8">
+        <h2 class="text-white font-bold text-4xl pt-10">Inscrivez-vous !</h2>
+        <p class="text-white mt-10 font-semibold">Pour une expérience de navigation personnalisée, n'hésitez pas à vous inscrire sur notre plateforme !</p>
+    </div>
 
-            <div class="flex justify-center">
-                <div class="text-center">
-                    <p class="mb-4 text-white font-semibold">Vous êtes un candidat ?<br>Inscrivez-vous pour accéder à des offres personnalisées</p>
-                    <button class="image-button"><img src="images/icone_candidat.png" alt="Bouton lien Candidat" width="200px" height="200px"></button>
-                </div>
+    <div class="flex justify-center">
+        <div class="text-center">
+            <p class="mb-4 text-white font-semibold">Vous êtes un candidat ?<br>Inscrivez-vous pour accéder à des offres personnalisées</p>
+            <button class="bg-white text-blue font-bold py-2 px-4 rounded pb-8">Inscription</button>
         </div>
-    </section>
+    </div>
+</section>
+
 
     <section class="height70 pt-8">
         <h3 class="text-blue-500 text-4xl font-extrabold text-center">3i School c'est quoi ?</h3>

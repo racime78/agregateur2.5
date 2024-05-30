@@ -82,6 +82,7 @@
             echo "<h3 class='text-xl font-semibold mb-2'>" . $row["Titre"] . "</h3>";
             echo "<p class='text-gray-600 mb-2'>" . $row["Entreprise"] . ", " . $row["NomV"] . "</p>";
             echo "<p class='text-gray-600 mb-4'>" . $row["Contrat"] . "</p>";
+            echo "<p class='text-gray-600 mb-4'>" . $row["Date_Offre"] . "</p>";
             echo "<a href='" . $row["Lien"] . "' class='bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600'>Voir l'offre</a>";
             echo "</div>";
           }
