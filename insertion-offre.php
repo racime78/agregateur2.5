@@ -2,6 +2,7 @@
 
 // Appel du fichier de connexion à la base de données
 require('config.php');
+
 // Vérifier si le formulaire a été soumis
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Vérifier si tous les champs du formulaire ont été remplis
@@ -17,7 +18,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $ville = $_POST['ville'];
         
         // Préparer la requête d'insertion
-        $sql = "INSERT INTO offre (Entreprise, LogoUrl, Titre, Date_Offre, Contrat, Lien, Ville) VALUES ('$entreprise', '$logourl', '$titre', '$dateoffre', '$contrat', '$urloffre', '$ville')";
+        $sql = "INSERT INTO offre (Entreprise, LogoUrl, Titre, Date_Offre, Contrat, Lien, ID_Ville) VALUES ('$entreprise', '$logourl', '$titre', '$dateoffre', '$contrat', '$urloffre', '$ville')";
         
         // Exécuter la requête d'insertion
         if ($conn->query($sql) === TRUE) {

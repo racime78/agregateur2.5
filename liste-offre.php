@@ -67,8 +67,12 @@
       <?php
         require('config.php');
 
-        // Récupérer les offres d'emploi depuis la base de données
-        $sql = "SELECT * FROM offre";
+        // Requête pour récupérer les offres d'emploi avec les noms des villes
+        $sql = "
+          SELECT offre.*, ville.NomV 
+          FROM offre 
+          JOIN ville ON offre.ID_Ville = ville.ID_VilleRegion
+        ";
         $result = $conn->query($sql);
 
         // Afficher les offres d'emploi dans le tableau
@@ -76,14 +80,15 @@
           while($row = $result->fetch_assoc()) {
             echo "<div class='offer-card border border-gray-200 rounded-lg p-4 mb-4'>";
             echo "<h3 class='text-xl font-semibold mb-2'>" . $row["Titre"] . "</h3>";
-            echo "<p class='text-gray-600 mb-2'>" . $row["Entreprise"] . ", " . $row["ID_Ville"] . "</p>";
+            echo "<p class='text-gray-600 mb-2'>" . $row["Entreprise"] . ", " . $row["NomV"] . "</p>";
             echo "<p class='text-gray-600 mb-4'>" . $row["Contrat"] . "</p>";
-            echo "<button class='bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600'>Voir l'offre</button>";
+            echo "<a href='" . $row["Lien"] . "' class='bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600'>Voir l'offre</a>";
             echo "</div>";
           }
         } else {
           echo "<p>Aucune offre d'emploi trouvée.</p>";
         }
+
         $conn->close();
       ?>
     </div>
