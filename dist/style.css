@@ -66,6 +66,43 @@ html,
   color: #2563eb;
 }
 
+.mrg10{
+  margin-bottom: 10vh;
+}
+
+.btn-primary {
+  @apply py-1.5 px-3 text-center bg-blue-700 rounded-md text-white;}
+
+.navbar-fixed {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 50;
+}
+.content {
+  margin-top: 100px; /* Adjust this value to match the height of the navbar */
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  height: calc(100vh - 100px); /* Adjust this value based on the navbar height */
+}
+.main-content-scrollable {
+  flex: 1;
+  height: 100%;
+  overflow-y: auto;
+  padding: 20px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.main-content {
+  flex: 1;
+  padding: 20px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
 body {
   margin: 0;
   /* 1 */

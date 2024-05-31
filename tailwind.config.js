@@ -7,6 +7,7 @@ module.exports = {
     "./**/*.tsx", 
   ],
   theme: {
+    darkMode: 'class',
     extend: {
       fontFamily: {
         'poppins': ['Poppins', 'sans-serif'],
