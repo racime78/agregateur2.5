@@ -27,8 +27,7 @@
                 <!-- Contact Details -->
                 <div class="flex-1 bg-white dark:bg-slate-700 p-6 rounded-lg shadow-md">
                     <p class="mb-8 text-lg text-gray-600 dark:text-slate-400">
-                        Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Duis
-                        nec ipsum orci. Ut scelerisque sagittis ante, ac tincidunt sem venenatis ut.
+                    Vous avez des questions sur 3i School ? <br>Remplissez rapidement le formulaire ci-dessous et notre équipe vous répondra dans les plus brefs délais. Faites le premier pas vers une carrière prometteuse, nous sommes là pour vous guider.
                     </p>
                     <ul>
                         <li class="flex mb-6">
@@ -44,8 +43,8 @@
                             </div>
                             <div class="ml-4">
                                 <h3 class="text-lg font-medium leading-6 text-black">Our Address</h3>
-                                <p class="text-gray-600 dark:text-slate-400">1230 Maecenas Street Donec Road</p>
-                                <p class="text-gray-600 dark:text-slate-400">New York, EEUU</p>
+                                <p class="text-gray-600 dark:text-slate-400">3i School 2 rue de la Lune Corail</p>
+                                <p class="text-gray-600 dark:text-slate-400">95800 Cergy</p>
                             </div>
                         </li>
                         <li class="flex mb-6">
@@ -59,9 +58,11 @@
                                 </svg>
                             </div>
                             <div class="ml-4">
-                                <h3 class="text-lg font-medium leading-6 text-gray-900 dark:text-white">Contact</h3>
-                                <p class="text-gray-600 dark:text-slate-400">Mobile: +1 (123) 456-7890</p>
-                                <p class="text-gray-600 dark:text-slate-400">Mail: tailnext@gmail.com</p>
+                                <h3 class="text-lg font-medium leading-6 text-gray-900">Contact</h3>
+                                <p class="text-gray-600 dark:text-slate-400">Mobile: +33 7 67 00 20 27</p>
+                                <p class="text-gray-600 dark:text-slate-400">Mail: 3i-school@3i-school.fr
+
+</p>
                             </div>
                         </li>
                         <li class="flex">
@@ -74,10 +75,9 @@
                                 </svg>
                             </div>
                             <div class="ml-4">
-                                <h3 class="text-lg font-medium leading-6 text-gray-900 dark:text-white">Working hours
+                                <h3 class="text-lg font-medium leading-6 text-gray-900">Working hours
                                 </h3>
-                                <p class="text-gray-600 dark:text-slate-400">Monday - Friday: 08:00 - 17:00</p>
-                                <p class="text-gray-600 dark:text-slate-400">Saturday &amp; Sunday: 08:00 - 12:00</p>
+                                <p class="text-gray-600 dark:text-slate-400">Lundi - Vendredi: 09:30 - 17:30</p>
                             </div>
                         </li>
                     </ul>
