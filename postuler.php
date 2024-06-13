@@ -6,7 +6,9 @@
   <title>Gestion des offres d'emploi</title>
   <link rel="stylesheet" href="dist/style.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap">
-
+  <style>
+    .offer-card { cursor: pointer; }
+  </style>
 </head>
 <body class="bg-gray-100">
   <div class="navbar-fixed">
@@ -30,7 +32,7 @@
       </select>
     </div>
 
-    <div class="main-content-scrollable">
+    <div class="main-content-scrollable w-1/2">
       <?php
         require('config.php');
 
@@ -45,7 +47,7 @@
         // Afficher les offres d'emploi dans le tableau
         if ($result->num_rows > 0) {
           while($row = $result->fetch_assoc()) {
-            echo "<div class='offer-card border border-gray-200 rounded-lg p-4 mb-4'>";
+            echo "<div class='offer-card border border-gray-200 rounded-lg p-4 mb-4' data-titre='" . $row["Titre"] . "' data-description='" . $row["Description_offre"] . "'>";
             echo "<h3 class='text-xl font-semibold mb-2'>" . $row["Titre"] . "</h3>";
             echo "<p class='text-gray-600 mb-2'>" . $row["Entreprise"] . ", " . $row["NomV"] . "</p>";
             echo "<p class='text-gray-600 mb-4'>" . $row["Contrat"] . "</p>";
@@ -61,13 +63,28 @@
       ?>
     </div>
 
-    <div class="main-content ml-6">
-      <h2 class="text-2xl font-semibold mb-4">Titre de l'offre</h2>
+    <div class="main-content ml-6 w-1/2">
+      <h2 id="offer-title" class="text-2xl font-semibold mb-4">Titre de l'offre</h2>
       <p class="text-gray-700 mb-4">Description de l'offre</p>
-      <p class="text-gray-700">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Vestibulum lorem sed risus ultricies tristique nulla aliquet. Proin sagittis nisl rhoncus mattis rhoncus. Integer malesuada nunc vel risus commodo viverra maecenas. Proin sagittis nisl rhoncus mattis rhoncus. Integer malesuada nunc vel risus commodo viverra maecenas. Proin sagittis nisl rhoncus mattis rhoncus.</p>
+      <p id="offer-description" class="text-gray-700">Texte de la description</p>
     </div>
   </div>
 
   <?php include('footer.html'); ?>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const offerCards = document.querySelectorAll('.offer-card');
+      offerCards.forEach(card => {
+        card.addEventListener('click', function () {
+          const titre = this.getAttribute('data-titre');
+          const description = this.getAttribute('data-description');
+
+          document.getElementById('offer-title').textContent = titre;
+          document.getElementById('offer-description').textContent = description;
+        });
+      });
+    });
+  </script>
 </body>
 </html>

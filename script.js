@@ -52,3 +52,21 @@ var swiper = new Swiper(".slide-content", {
       prevEl: ".swiper-button-prev",
     },
   });
+
+  document.addEventListener('DOMContentLoaded', function () {
+    setupOfferCardClickEvents();
+  });
+  
+  function setupOfferCardClickEvents() {
+    const offerCards = document.querySelectorAll('.offer-card');
+    offerCards.forEach(card => {
+      card.addEventListener('click', function () {
+        const titre = this.getAttribute('data-titre');
+        const description = this.getAttribute('data-description');
+  
+        document.getElementById('offer-title').textContent = titre;
+        document.getElementById('offer-description').textContent = description;
+      });
+    });
+  }
+  
