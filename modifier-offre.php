@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Modifier l'offre d'emploi</title>
     <link rel="stylesheet" href="/agregateur2/dist/style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
 </head>
 <body>
 
@@ -20,6 +23,7 @@ if(isset($_GET['id']) && !empty($_GET['id'])) {
 
     if ($result->num_rows > 0) {
         $row = $result->fetch_assoc();
+        $current_ville_id = $row['ID_Ville'];
 ?>
         <div class="max-w-md mx-auto">
             <h2 class="text-2xl font-bold mb-4">Modifier l'offre d'emploi</h2>
@@ -48,7 +52,9 @@ if(isset($_GET['id']) && !empty($_GET['id'])) {
                 
                 <div>
                     <label for="ville" class="block mb-1">Ville:</label>
-                    <input type="text" id="ville" name="ville" value="<?php echo $row['ID_Ville']; ?>" class="w-full border border-gray-300 rounded px-3 py-2">
+                    <select name="ville" id="ville" class="w-full border border-gray-300 rounded px-3 py-2">
+                        <option value="">Sélectionner une ville</option>
+                    </select>
                 </div>
 
                 <div>
@@ -61,6 +67,43 @@ if(isset($_GET['id']) && !empty($_GET['id'])) {
                 </div>
             </form>
         </div>
+
+        <script>
+          $(document).ready(function() {
+            $('#ville').select2({
+              placeholder: 'Sélectionner une ville',
+              minimumInputLength: 3,
+              ajax: {
+                url: 'search_villes.php',
+                dataType: 'json',
+                delay: 250,
+                data: function(params) {
+                  return {
+                    q: params.term
+                  };
+                },
+                processResults: function(data) {
+                  return {
+                    results: data
+                  };
+                },
+                cache: true
+              }
+            });
+
+            // Pre-select the current city
+            $.ajax({
+                url: 'search_ville_by_id.php',
+                type: 'GET',
+                data: { id: <?php echo $current_ville_id; ?> },
+                success: function(data) {
+                    var city = JSON.parse(data);
+                    var option = new Option(city.text, city.id, true, true);
+                    $('#ville').append(option).trigger('change');
+                }
+            });
+          });
+        </script>
 
 <?php
     } else {

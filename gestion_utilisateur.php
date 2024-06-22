@@ -25,6 +25,7 @@
 
 <div class="container">
   <h2 class="text-2xl font-bold text-gray-800 mb-4 text-center">Gestion des utilisateurs</h2>
+  <a href="formulaire-utilisateur.php"><button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mb-4">Ajouter un utilisateur</button></a>
 
   <div class="overflow-x-auto">
     <table class="min-w-full border border-gray-200 mx-auto">
@@ -42,11 +43,9 @@
         <?php
           require('config.php');
 
-          // Récupérer les utilisateurs depuis la base de données
           $sql = "SELECT * FROM utilisateur";
           $result = $conn->query($sql);
 
-          // Afficher les utilisateurs dans le tableau
           if ($result->num_rows > 0) {
             while($row = $result->fetch_assoc()) {
               echo "<tr>";

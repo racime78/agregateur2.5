@@ -1,3 +1,13 @@
+<?php
+require('config.php');
+
+$sql = "SELECT o.ID_O, o.Entreprise, o.Titre, o.Date_Offre, o.Contrat, v.NomV 
+        FROM offre o 
+        JOIN ville v ON o.ID_Ville = v.ID_VilleRegion";
+$result = $conn->query($sql);
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -25,6 +35,7 @@
 
 <div class="container">
   <h2 class="text-2xl font-bold text-gray-800 mb-4 text-center">Gestion des offres d'emploi</h2>
+  <a href="formulaire-offres.php"><button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mb-4">Ajouter une offre</button></a>
 
   <div class="overflow-x-auto">
     <table class="min-w-full border border-gray-200 mx-auto">
@@ -41,13 +52,7 @@
       </thead>
       <tbody>
         <?php
-          require('config.php');
-
-          // Récupérer les offres d'emploi depuis la base de données
-          $sql = "SELECT * FROM offre";
-          $result = $conn->query($sql);
-
-          // Afficher les offres d'emploi dans le tableau
+          // Display job offers in the table
           if ($result->num_rows > 0) {
             while($row = $result->fetch_assoc()) {
               echo "<tr>";
@@ -56,7 +61,7 @@
               echo "<td class='border px-4 py-2'>" . $row["Titre"] . "</td>";
               echo "<td class='border px-4 py-2'>" . $row["Date_Offre"] . "</td>";
               echo "<td class='border px-4 py-2'>" . $row["Contrat"] . "</td>";
-              echo "<td class='border px-4 py-2'>" . $row["ID_Ville"] . "</td>";
+              echo "<td class='border px-4 py-2'>" . $row["NomV"] . "</td>";
               echo "<td class='border px-4 py-2 flex actions'>";
               echo "<a href='voir-offre.php?id=" . $row["ID_O"] . "' class='text-blue-500 hover:underline mr-2'>Voir</a>";
               echo "<a href='modifier-offre.php?id=" . $row["ID_O"] . "' class='text-yellow-500 hover:underline mr-2'>Modifier</a>";
@@ -75,17 +80,14 @@
 </div>
 
 <script>
-  // Fonction pour ouvrir un pop-up pour voir l'offre
   function voirOffre(id) {
     window.open('voir-offre.php?id=' + id, 'Voir Offre', 'width=600,height=400');
   }
 
-  // Fonction pour ouvrir un pop-up pour modifier l'offre
   function modifierOffre(id) {
     window.open('modifier-offre.php?id=' + id, 'Modifier Offre', 'width=600,height=400');
   }
 
-  // Fonction pour ouvrir un pop-up pour supprimer l'offre
   function supprimerOffre(id) {
     if (confirm("Êtes-vous sûr de vouloir supprimer cette offre ?")) {
       window.open('supprimer-offre.php?id=' + id, 'Supprimer Offre', 'width=400,height=200');

@@ -17,7 +17,7 @@
         <h2 class="text-4xl font-extrabold dark:text-white mb-4 text-white">Rapide, Clair et Intuitif</h2>
         <h1 class="text-5xl font-extrabold dark:text-white mb-8 text-white">Postuler Rapidement ! </h1>
         <p class="mb-4 text-white font-bold">3i School vous accompagne dans votre recherche d’emploi.</br> Nous vous centralisons un grand nombre d’offres d’emploi lié à l’IT sur notre plateforme.</p>
-        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Postuler à des offres</button>
+        <a href="postuler.php"><button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Postuler à des offres</button></a>
     </section>
 
     <section class="bg-blue-500 height45 pt-8">

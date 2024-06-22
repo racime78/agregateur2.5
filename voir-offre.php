@@ -14,8 +14,11 @@
         if(isset($_GET['id']) && !empty($_GET['id'])) {
             $offre_id = $_GET['id'];
 
-            // Récupérer les détails de l'offre d'emploi
-            $sql = "SELECT * FROM offre WHERE ID_O = $offre_id";
+            // Récupérer les détails de l'offre d'emploi avec le nom de la ville
+            $sql = "SELECT o.*, v.NomV 
+                    FROM offre o 
+                    JOIN ville v ON o.ID_Ville = v.ID_VilleRegion 
+                    WHERE o.ID_O = $offre_id";
             $result = $conn->query($sql);
 
             if ($result->num_rows > 0) {
@@ -29,9 +32,8 @@
                         <p class="mt-1 max-w-2xl text-sm text-gray-500">Titre: <?php echo $row['Titre']; ?></p>
                         <p class="mt-1 max-w-2xl text-sm text-gray-500">Date de l'offre: <?php echo $row['Date_Offre']; ?></p>
                         <p class="mt-1 max-w-2xl text-sm text-gray-500">Contrat: <?php echo $row['Contrat']; ?></p>
-                        <p class="mt-1 max-w-2xl text-sm text-gray-500">Ville: <?php echo $row['ID_Ville']; ?></p>
-                        <p class="mt-1 max-w-2xl text-sm text-gray-500">Description: </br> <?php echo $row['Description_offre']; ?></p>
-
+                        <p class="mt-1 max-w-2xl text-sm text-gray-500">Ville: <?php echo $row['NomV']; ?></p>
+                        <p class="mt-1 max-w-2xl text-sm text-gray-500">Description: </br> <?php echo nl2br($row['Description_offre']); ?></p>
                     </div>
                 </div>
         <?php

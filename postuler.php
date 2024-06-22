@@ -44,7 +44,7 @@
         ";
         $result = $conn->query($sql);
 
-        // Afficher les offres d'emploi dans le tableau
+        // Afficher les offres d'emploi
         if ($result->num_rows > 0) {
           while($row = $result->fetch_assoc()) {
             echo "<div class='offer-card border border-gray-200 rounded-lg p-4 mb-4' data-titre='" . $row["Titre"] . "' data-description='" . $row["Description_offre"] . "'>";
