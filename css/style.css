@@ -247,4 +247,9 @@
   .mrg30{
     margin-bottom: 30px;
   }
+
+  .txt-black{
+    color: #0000;
+    background-color: #2563eb;
+  }
   }
